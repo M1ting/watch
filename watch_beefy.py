@@ -6,7 +6,7 @@ from email.message import EmailMessage
 
 # ── 环境变量 ──────────────────────────────────────────
 IDS  = [v.strip() for v in os.environ["VAULT_IDS"].split(",")]
-TH   = float(os.getenv("APY_TH", "0.99"))           # 默认 8 %
+TH   = float(os.getenv("APY_TH", "0.09"))           # 默认 8 %
 USER = os.environ["EMAIL_USER"]                    # Gmail 地址
 PWD  = os.environ["EMAIL_PASS"]                    # 16 位 App Password
 TO   = [m.strip() for m in os.environ["EMAIL_TO"].split(",")]
