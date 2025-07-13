@@ -1,0 +1,27 @@
+name: Beefy APY Watch           # 工作流名称，可改
+
+on:
+  schedule:                     # 定时触发
+    # 每小时的 04、19、34、49 分跑一次（≥5 min 间隔，避开整点排队）
+    - cron: "4,19,34,49 * * * *"
+    # 允许手动点按钮
+  workflow_dispatch:
+
+jobs:
+  check_apy:
+    runs-on: ubuntu-latest      # GitHub 托管 Linux
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install Python deps
+        run: pip install requests
+
+      - name: Run watcher
+        env:                    # 从 Secrets 里取变量
+          VAULT_IDS:   ${{ secrets.VAULT_IDS }}
+          APY_TH:      ${{ secrets.APY_TH }}
+          EMAIL_USER:  ${{ secrets.EMAIL_USER }}
+          EMAIL_PASS:  ${{ secrets.EMAIL_PASS }}
+          EMAIL_TO:    ${{ secrets.EMAIL_TO }}
+        run: python watch_beefy.py
