@@ -2,7 +2,7 @@ import os, ssl, smtplib, requests
 from email.message import EmailMessage
 
 IDS   = [v.strip() for v in os.environ["VAULT_IDS"].split(",")]
-TH    = 0.08
+TH    = float(os.environ["APY_TH"])
 USER  = os.environ["EMAIL_USER"]
 PWD   = os.environ["EMAIL_PASS"]
 TO    = [m.strip() for m in os.environ["EMAIL_TO"].split(",")]
