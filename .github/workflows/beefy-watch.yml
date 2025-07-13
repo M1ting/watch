@@ -20,7 +20,7 @@ jobs:
       - name: Run watcher
         env:                    # 从 Secrets 里取变量
           VAULT_IDS:   ${{ secrets.VAULT_IDS }}
-          APY_TH:      "0.99"
+          APY_TH:      "0.08"
           EMAIL_USER:  ${{ secrets.EMAIL_USER }}
           EMAIL_PASS:  ${{ secrets.EMAIL_PASS }}
           EMAIL_TO:    ${{ secrets.EMAIL_TO }}
